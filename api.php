@@ -6,17 +6,15 @@ $bbdd = "app";
 
 $conexion = new mysqli($servidor, $usuario, $password, $bbdd);
 
-// Verificar errores de conexión
-if ($conexion->connect_error) {
-    die("Error de conexión: " . $conexion->connect_error);
-} else {
+if (!$conexion->connect_error) {
     echo "Conexión establecida<br>";
-}
-
-if ($_POST && isset($_POST["tarea"])) { // Verificar si se ha enviado algo mediante POST
-    $tarea = $_POST["tarea"];
-    echo "Se agregó la tarea: " . $tarea;
-} else {
+} else{
     print_r($conexion->connect_error);
 }
+
+if($_POST) {
+    echo "Se agrego la tarea: ".$POST["tarea"];
+}
+
+
 ?>
